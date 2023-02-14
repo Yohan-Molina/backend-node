@@ -1,5 +1,5 @@
 import { Car } from "../interfaces/car.interface"
-import ItemModel from "../models/item.model"
+import ItemModel from "../models/nosql/item.model"
 
 const getAllOrders = async () => {
     const response= await ItemModel.find({});

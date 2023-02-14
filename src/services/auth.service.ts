@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { Auth } from "../interfaces/auth.interface";
 import { User } from "../interfaces/user.interfaces";
-import UserModel from "../models/user.model";
+import UserModel from "../models/nosql/user.model";
 import { encryptPassword, verifyPassword } from "../utils/bcrypt.handle";
 import { generateToken } from "../utils/jwt.handle";
 
