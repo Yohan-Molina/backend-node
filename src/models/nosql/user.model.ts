@@ -1,21 +1,35 @@
 import { Schema, model } from 'mongoose';
-import { User } from '../../interfaces/user.interfaces';
+import { UserI } from '../../interfaces/user.interface';
 
-
-const UserSchema = new Schema<User>(
+const UserSchema = new Schema<UserI>(
     {
         name: {
-            type: String,
-            required: true
+            type: String, 
+            required: [true, 'The name is required']
         },
         email: {
-            type: String,
-            required: true,
-            unique: true
+            type: String, 
+            required: [true, 'The name is required'],
+            unique: true 
         },
         password: {
-            type: String,
+            type: String, 
+            required: [true, 'Password is required']
+        },
+        img: {
+            type: String
+        },
+        rol: {
+            type: String, 
             required: true
+        },
+        state: {
+            type: Boolean,
+            default: true
+        },
+        google: {
+            type: Boolean, 
+            default: false
         }
     },
     {
@@ -24,7 +38,10 @@ const UserSchema = new Schema<User>(
     }
 );
 
+UserSchema.methods.toJSON = function() {
+    const { password, ...user } = this.toObject();
+    return user;
+}
 
 const UserModel = model("users", UserSchema);
-
 export default UserModel;

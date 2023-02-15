@@ -1,8 +1,8 @@
-import { Schema, Types,model, Model } from 'mongoose';
-import { User } from '../interfaces/user.interfaces';
+import { Schema, model } from 'mongoose';
+import { User } from '../../interfaces/userold.interfaces';
 
 
-const UserSchema = new Schema<User>(
+const AuthSchema = new Schema<User>(
     {
         name: {
             type: String,
@@ -16,11 +16,7 @@ const UserSchema = new Schema<User>(
         password: {
             type: String,
             required: true
-        },
-        description: {
-            type: String,
-            default: 'User Description'
-        },
+        }
     },
     {
         timestamps: true,
@@ -29,6 +25,6 @@ const UserSchema = new Schema<User>(
 );
 
 
-const UserModel = model("users", UserSchema);
+const AuthModel = model("auth", AuthSchema);
 
-export default UserModel;
+export default AuthModel;

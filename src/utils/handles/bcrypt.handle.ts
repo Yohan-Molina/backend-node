@@ -1,9 +1,11 @@
-import { hash, compare } from "bcryptjs"
+import { hashSync, genSaltSync, compare } from "bcryptjs"
 
 const encryptPassword = async (password: string) => {
-    const passwordHash = await hash(password, 8);
+    const salt = genSaltSync();
+    const passwordHash = await hashSync(password, salt);
     return passwordHash;
 }
+
 
 const verifyPassword = async (password: string, encryptedPassword: string) => {
     const isCorrect = await compare(password, encryptedPassword);

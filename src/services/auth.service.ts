@@ -1,9 +1,9 @@
 import { Request, Response } from "express"
 import { Auth } from "../interfaces/auth.interface";
-import { User } from "../interfaces/user.interfaces";
-import UserModel from "../models/nosql/user.model";
-import { encryptPassword, verifyPassword } from "../utils/bcrypt.handle";
-import { generateToken } from "../utils/jwt.handle";
+import { User } from "../interfaces/userold.interfaces";
+import UserModel from "../models/nosql/userold.model";
+import { encryptPassword, verifyPassword } from "../utils/handles/bcrypt.handle";
+import { generateToken } from "../utils/handles/jwt.handle";
 
 const registerNewUser = async ({ email, password, name }: User) => {
 
